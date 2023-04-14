@@ -36,18 +36,18 @@ defmodule Oc2.DoSet do
   end
 
   defp set_color("rainbow", command) do
-    Phoenix.PubSub.broadcast(TwinklyMaha.PubSub, @topic, "rainbow")
+    # Phoenix.PubSub.broadcast(TwinklyMaha.PubSub, @topic, "rainbow")
     %Oc2.Command{command | response: %{status: 200}}
   end
 
   defp set_color("off", command) do
-    Phoenix.PubSub.broadcast(TwinklyMaha.PubSub, @topic, "off")
+    # Phoenix.PubSub.broadcast(TwinklyMaha.PubSub, @topic, "off")
     %Oc2.Command{command | response: %{status: 200}}
   end
 
   defp set_color(color, command) do
     if color in @colors do
-      Phoenix.PubSub.broadcast(TwinklyMaha.PubSub, @topic, color)
+      # Phoenix.PubSub.broadcast(TwinklyMaha.PubSub, @topic, color)
       %Oc2.Command{command | response: %{status: 200}}
     else
       Oc2.Command.return_error("invalid color")

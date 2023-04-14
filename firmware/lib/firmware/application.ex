@@ -13,12 +13,20 @@ defmodule Firmware.Application do
 
     children =
       [
+      # start mqtt connection
+      {Tortoise.Supervisor,
+       [
+         name: Oc2Mqtt.Connection.Supervisor,
+         strategy: :one_for_one
+       ]}
         # Children for all targets
         # Starts a worker by calling: Firmware.Worker.start_link(arg)
         # {Firmware.Worker, arg},
       ] ++ children(target())
 
     Supervisor.start_link(children, opts)
+
+     Mqtt.start()
   end
 
   # List all child processes to be supervised
