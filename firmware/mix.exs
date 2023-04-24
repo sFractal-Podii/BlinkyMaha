@@ -39,6 +39,7 @@ defmodule Firmware.MixProject do
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.13.0", targets: @all_targets},
       {:nerves_pack, "~> 0.7.0", targets: @all_targets},
+      {:nerves_leds, "~> 0.8", targets: @all_targets},
       {:jason, "~> 1.2"},
 
       # Dependencies for specific targets
