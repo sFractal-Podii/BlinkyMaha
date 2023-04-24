@@ -67,7 +67,7 @@ defmodule Mqtt do
 
     Logger.info("password set")
 
-    {:ok, _} =
+    {:ok, _pid} =
       Tortoise.Supervisor.start_child(
         Oc2Mqtt.Connection.Supervisor,
         client_id: client_id,
@@ -75,7 +75,7 @@ defmodule Mqtt do
         server: server,
         user_name: user_name,
         password: password,
-        subscriptions: [{"sfractal/command", 0}]
+        subscriptions: [{"sfractal/command", 0}, {"sfractal/response", 0}]
       )
   end
 end

@@ -28,10 +28,25 @@ defmodule Mqtt.Command do
   end
 
   def return_result(command) do
+    client_id = System.get_env("CLIENT_ID")
+    IO.inspect(client_id, label: "==========================")
     Logger.debug("return: ok #{inspect(command.response)}")
     response = Jason.encode(command.response)
     Logger.debug("json: #{inspect(response)}")
-    Tortoise.publish("sFractal/response", response)
+
+    command = """
+    {"action": "query", 
+    "target": {"x-sfractal-blinky:hello_world": "Hello"},
+    "args": {"response_requested": "complete"}
+    }
+    """
+
+    Tortoise.publish(client_id, "sFractal/response", command)
+    |> IO.inspect(label: "----------------command")
+
     {:ok, command}
   end
 end
+
+# 1. How are we supposed to publish on the raspberry pi
+# 2. What will be our broker now that we are using rpi

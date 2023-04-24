@@ -73,6 +73,8 @@ defmodule Mqtt.Handler do
   end
 
   def handle_message(topic, msg, state) do
+    IO.inspect(topic, label: "==========================")
+    IO.inspect(msg, label: "+++++++++++++++++++++++++++++")
     Logger.info("topic != sfractal/command")
     Logger.info("#{state.name}, #{Enum.join(topic, "/")} #{inspect(msg)}")
     {:ok, state}
