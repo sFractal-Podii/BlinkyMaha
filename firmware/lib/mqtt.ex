@@ -13,7 +13,7 @@ defmodule Mqtt do
   """
   def start do
     client_id =
-      System.get_env("CLIENT_ID") ||
+      Application.get_env(:firmware, :client_id) ||
         raise """
         environment variable CLIENT_ID is missing.
         For example:
@@ -23,7 +23,7 @@ defmodule Mqtt do
     Logger.info("client_id is #{client_id}")
 
     mqtt_host =
-      System.get_env("MQTT_HOST") ||
+      Application.get_env(:firmware, :mqtt_host) ||
         raise """
         environment variable HOST is missing.
         Examples:
@@ -34,21 +34,19 @@ defmodule Mqtt do
     Logger.info("mqtt_host is #{mqtt_host}")
 
     mqtt_port =
-      String.to_integer(
-        System.get_env("MQTT_PORT") ||
+        Application.get_env(:firmware, :mqtt_port) ||
           raise("""
           environment variable MQTT_PORT is missing.
           Example:
           export MQTT_PORT=1883
           """)
-      )
 
     Logger.info("mqtt_port is #{mqtt_port}")
 
     server = {Tortoise.Transport.Tcp, host: mqtt_host, port: mqtt_port}
 
     user_name =
-      System.get_env("USER_NAME") ||
+      Application.get_env(:firmware, :user_name) ||
         raise """
         environment variable USER_NAME is missing.
         Examples:
@@ -58,7 +56,7 @@ defmodule Mqtt do
     Logger.info("user_name is #{user_name}")
 
     password =
-      System.get_env("PASSWORD") ||
+      Application.get_env(:firmware, :password) ||
         raise """
         environment variable PASSWORD is missing.
         Example:
