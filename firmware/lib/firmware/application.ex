@@ -18,7 +18,8 @@ defmodule Firmware.Application do
          [
            name: Oc2Mqtt.Connection.Supervisor,
            strategy: :one_for_one
-         ]}
+         ]},
+        Firmware.Worker
         # Children for all targets
         # Starts a worker by calling: Firmware.Worker.start_link(arg)
         # {Firmware.Worker, arg},
