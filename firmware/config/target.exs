@@ -90,6 +90,12 @@ config :mdns_lite,
     }
   ]
 
+config :firmware, 
+    client_id: ":sfractal2020",
+    mqtt_host: "127.0.0.1",
+    mqtt_port: 1883,
+    user_name: "plug",
+    password: "fest"
 # Import target specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 # Uncomment to use target specific configurations
