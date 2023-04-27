@@ -2,7 +2,7 @@ defmodule Firmware.MixProject do
   use Mix.Project
 
   @app :firmware
-  @version "0.1.0"
+  @version "0.1.1"
   @all_targets [:rpi, :rpi0, :rpi2, :rpi3, :rpi3a, :rpi4, :bbb, :osd32mp1, :x86_64, :grisp2]
 
   def project do

@@ -76,4 +76,4 @@ The [git branch](https://github.com/sigu/sbom.git) used automates the following 
 
    ### Generated SBOM files Attached in release
 
-   
+   1. https://github.com/sFractal-Podii/BlinkyMaha/releases/download/v0.1.1/firmware.0.1.0-.zip
