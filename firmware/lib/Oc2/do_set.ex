@@ -40,8 +40,15 @@ defmodule Oc2.DoSet do
     %Oc2.Command{command | response: %{status: 200}}
   end
 
+  defp set_color("on", command) do
+    # Phoenix.PubSub.broadcast(TwinklyMaha.PubSub, @topic, "off")
+    Firmware.Worker.enable()
+    %Oc2.Command{command | response: %{status: 200}}
+  end
+
   defp set_color("off", command) do
     # Phoenix.PubSub.broadcast(TwinklyMaha.PubSub, @topic, "off")
+    Firmware.Worker.disable()
     %Oc2.Command{command | response: %{status: 200}}
   end
 
@@ -54,3 +61,12 @@ defmodule Oc2.DoSet do
     end
   end
 end
+
+# """
+
+# {"action": "query", 
+# "target": {"x-sfractal-blinky:led": "off"},
+# "args": {"response_requested": "complete"}
+# }
+
+# """
