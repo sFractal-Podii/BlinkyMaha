@@ -35,11 +35,12 @@ defmodule Firmware.MixProject do
       {:ring_logger, "~> 0.8.5"},
       {:toolshed, "~> 0.2.26"},
       {:tortoise, "~> 0.9"},
+      {:nerves_leds, "~>0.8"},
 
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.13.0", targets: @all_targets},
       {:nerves_pack, "~> 0.7.0", targets: @all_targets},
-      {:nerves_leds, "~> 0.8", targets: @all_targets},
+      # {:nerves_leds, "~> 0.8", targets: @all_targets},
       {:jason, "~> 1.2"},
 
       # Dependencies for specific targets
